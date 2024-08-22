@@ -1,3 +1,90 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Keyframes for the border animation */
+@keyframes borderAnimation {
+    0% {
+      width: 0;
+      left: 0;
+      right: auto;
+    }
+    25% {
+      width: 100%;
+      left: 0;
+      right: auto;
+    }
+    50% {
+      width: 100%;
+      left: auto;
+      right: 0;
+    }
+    75% {
+      width: 0;
+      left: auto;
+      right: 0;
+    }
+    100% {
+      width: 0;
+      left: 0;
+      right: auto;
+    }
+  }
+  
+  /* Navigation link style */
+  nav .nav-link {
+    position: relative;
+    color: #326C85;
+    font-weight: 500; /* Using font-weight instead of font-medium */
+    text-decoration: none;
+    overflow: hidden; /* Ensures the animation stays within bounds */
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+  }
+  
+  /* Hover effect with border animation */
+  nav .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #326C85;
+    transition: width 0.6s ease-in-out; /* Adjusted duration for smoother effect */
+  }
+  
+  nav .nav-link:hover::before {
+    width: 100%;
+    transition: width 0.6s ease-in-out; /* Smooth width transition */
+  }
+  
+  nav .nav-link:hover {
+    color: #1e5f74;
+  }
+  
+
+  /* Dropdown menu */
+.dropdown-menu {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    background-color: #333; /* Dark background */
+    border-color: #555; /* Dark border */
+  }
+  
+  /* Show dropdown with animation */
+  .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Dropdown item hover effect */
+  .dropdown-item {
+    color: #fff; /* Light text color for contrast */
+  }
+  
+  .dropdown-item:hover {
+    background-color: #444; /* Darker hover effect */
+    transform: scale(1.05);
+  }
+  

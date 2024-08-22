@@ -9,6 +9,9 @@ const CollegeRegister = () => {
     totalAlumni: "",
   });
 
+  const [collegeNames, setCollegeNames] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+
   const coursesList = [
     "BTECH", "BSC", "BA", "MBA", "BCA", "MCA", "MTECH", "BBA", "PHD", "BPHARMA", "DPHARMA", "MBBS"
   ];
@@ -16,6 +19,18 @@ const CollegeRegister = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    // Handle college name suggestions
+    if (name === "collegeName") {
+      if (value) {
+        const filteredSuggestions = collegeNames.filter((college) =>
+          college.toLowerCase().startsWith(value.toLowerCase())
+        );
+        setSuggestions(filteredSuggestions);
+      } else {
+        setSuggestions([]);
+      }
+    }
   };
 
   const handleCheckboxChange = (e) => {
@@ -30,7 +45,12 @@ const CollegeRegister = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
+    // Add new college name to suggestions list if it doesn't already exist
+    if (!collegeNames.includes(formData.collegeName)) {
+      setCollegeNames([...collegeNames, formData.collegeName]);
+    }
+
     try {
       const response = await fetch('http://localhost:4000/register-college', {
         method: 'POST',
@@ -46,9 +66,10 @@ const CollegeRegister = () => {
           collegeName: "",
           collegeDirector: "",
           collegeEstablishedYear: "",
-          coursesAvailable: [],
+          coursesAvailable: [],  // Reset coursesAvailable array
           totalAlumni: "",
         });
+        setSuggestions([]); // Clear suggestions after successful registration
       } else {
         alert('Failed to register college');
       }
@@ -65,7 +86,7 @@ const CollegeRegister = () => {
           Register As College
         </h3>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
+          <div className="relative">
             <label className="block text-gray-700 font-semibold mb-2">College Name</label>
             <input
               type="text"
@@ -75,6 +96,22 @@ const CollegeRegister = () => {
               className="w-full px-4 py-2 border border-blue-300 focus:border-blue-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300 ease-in-out"
               required
             />
+            {suggestions.length > 0 && (
+              <ul className="absolute bg-white border border-gray-300 w-full mt-1 rounded-lg shadow-lg max-h-40 overflow-y-auto">
+                {suggestions.map((suggestion, index) => (
+                  <li
+                    key={index}
+                    onClick={() => {
+                      setFormData({ ...formData, collegeName: suggestion });
+                      setSuggestions([]);
+                    }}
+                    className="cursor-pointer px-4 py-2 hover:bg-gray-200"
+                  >
+                    {suggestion}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <div>
             <label className="block text-gray-700 font-semibold mb-2">College Director</label>
@@ -107,6 +144,7 @@ const CollegeRegister = () => {
                     type="checkbox"
                     value={course}
                     onChange={handleCheckboxChange}
+                    checked={formData.coursesAvailable.includes(course)}
                     className="form-checkbox h-5 w-5 text-pink-600 border-pink-300 focus:ring-pink-400 transition duration-300 ease-in-out"
                   />
                   <span className="ml-2 text-gray-700">{course}</span>
