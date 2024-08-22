@@ -54,7 +54,7 @@ function Navbar() {
           </span>
           {dropdownOpen && (
             <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 bg-[#333] shadow-lg border border-[#555] rounded-lg w-64">
-<Link
+              <Link
                 to="/register-college"
                 className="dropdown-item block px-4 py-2 font-medium text-white hover:bg-[#444] transition-transform duration-300 ease-in-out rounded-lg"
                 onClick={closeDropdown}
@@ -84,6 +84,13 @@ function Navbar() {
           className="nav-link font-medium px-3 py-2 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:bg-[#f0f4f8] hover:shadow-lg"
         >
           Contact Us
+        </Link>
+
+        <Link
+          to="/login"
+          className="nav-link font-medium px-3 py-2 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:bg-[#f0f4f8] hover:shadow-lg"
+        >
+          Login
         </Link>
       </div>
     </nav>

@@ -9,6 +9,8 @@ const AlumniRegister = () => {
     batch: "",
     currentCompany: "",
     position: "",
+    emailOrPhone: "",  // Field for Email or Phone
+    password: "",
     termsAccepted: false,
   });
 
@@ -54,6 +56,8 @@ const AlumniRegister = () => {
           batch: "",
           currentCompany: "",
           position: "",
+          emailOrPhone: "",
+          password: "",
           termsAccepted: false,
         });
       } else {
@@ -158,6 +162,28 @@ const AlumniRegister = () => {
               value={formData.position}
               onChange={handleInputChange}
               className="w-full px-4 py-2 border border-red-300 focus:border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-300 ease-in-out"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Email/Phone</label>
+            <input
+              type="text"
+              name="emailOrPhone"
+              value={formData.emailOrPhone}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-teal-300 focus:border-teal-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition duration-300 ease-in-out"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2 border border-orange-300 focus:border-orange-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition duration-300 ease-in-out"
               required
             />
           </div>
