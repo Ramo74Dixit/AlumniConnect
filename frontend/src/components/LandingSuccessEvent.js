@@ -2,30 +2,29 @@ import React from 'react'
 
 const LandingSuccessEvent = () => {
   return (
-<div className="mt-4 flex">
-      <div className='w-[44%] h-[300px] shadow border border-black" ml-5'>
-        <img src="./pr-1.jpg" alt="image1" className="ml-5" clasName="w-[400px] h-[200px] bg-transparent"/>
-        <h4 className="font-semibold text-xl ml-6 mt-3">Jane Smith-Enterprenuer</h4>
-        <div className="ml-6">
-          {" "}
-          <span className="text-sm text-justify">
-            Jane Smith,Class of 2010 has built a successful tech startup that is revolutioning the industry.
-          </span>
+    <div className="mt-4 flex flex-wrap justify-center gap-6">
+      <div className='w-[44%] h-[500px] shadow-lg border border-[#8c8c8c] rounded-lg bg-[#f5f5f5] transition-transform transform hover:scale-105 ml-5'>
+        <img src="./pr-1.jpg" alt="Jane Smith" className="w-full h-[60%] object-cover rounded-t-lg" />
+        <div className="p-4">
+          <h4 className="font-semibold text-xl text-[#326C85]">Jane Smith - Entrepreneur</h4>
+          <p className="text-sm text-gray-700 mt-2">
+            Jane Smith, Class of 2010, has built a successful tech startup that is revolutionizing the industry.
+          </p>
         </div>
       </div>
-      <div className='w-[44%] h-[300px] shadow border border-black" ml-12'>
-        <img src="./pr-2.jpg" alt="image2" className="ml-5 bg-transparent" width={400} height={200}/>
-        <h4 className="font-semibold text-xl ml-6 mt-3">
-          John Doe-Philanthropist
-        </h4>
-        <div className="ml-6">
-          <span className="text-sm text-justify">
-            John Doe,Class of 2005 has made significant contributions to various charitable organizations.
-          </span>
+  
+      <div className='w-[44%] h-[500px] shadow-lg border border-[#8c8c8c] rounded-lg bg-[#f5f5f5] transition-transform transform hover:scale-105 ml-12'>
+        <img src="./pr-2.jpg" alt="John Doe" className="w-full h-[60%] object-cover rounded-t-lg" />
+        <div className="p-4">
+          <h4 className="font-semibold text-xl text-[#326C85]">John Doe - Philanthropist</h4>
+          <p className="text-sm text-gray-700 mt-2">
+            John Doe, Class of 2005, has made significant contributions to various charitable organizations.
+          </p>
         </div>
       </div>
     </div>
-  )
+  );
+  
 }
 
 export default LandingSuccessEvent
