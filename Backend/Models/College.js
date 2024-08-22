@@ -6,6 +6,14 @@ const collegeSchema = new mongoose.Schema({
   collegeEstablishedYear: Number,
   coursesAvailable: [String],
   totalAlumni: Number,
+  emailOrPhone: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
 });
 
 module.exports = mongoose.model("College", collegeSchema);

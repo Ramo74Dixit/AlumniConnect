@@ -8,6 +8,8 @@ const alumniSchema = new mongoose.Schema({
   batch: { type: String, required: true },
   currentCompany: { type: String, required: true },
   position: { type: String, required: true },
+  emailOrPhone: { type: String, required: true }, // Email/Phone field
+  password: { type: String, required: true }, // Password field
   termsAccepted: { type: Boolean, required: true }
 });
 
